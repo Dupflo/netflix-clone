@@ -3,28 +3,52 @@ import styled from 'styled-components';
 export const Inner = styled.div`
   display: flex;
   align-items: center;
-  justify-centent: space-between;
+  justify-content: space-between;
   flex-direction: ${({ direction }) => direction};
   max-width: 1100px;
-  witdh: 100%;
+  margin: auto;
+  width: 100%;
 
   @media (max-width: 1000px) {
-    flex-directon: column;
+    flex-direction: column;
+  }
+`;
+
+export const Pane = styled.div`
+  width: 50%;
+
+  @media (max-width: 1000px) {
+    width: 100%;
+    padding: 0 45px;
+    text-align: center;
   }
 `;
 
 export const Item = styled.div`
   display: flex;
+  border-bottom: 8px solid #222;
+  padding: 50px 5%;
+  color: white;
+  overflow: hidden;
 `;
 
-export const Container = styled.section``;
+export const Container = styled.section`
+  background-color: black;
+  font-family: 'Roboto', sans-serif;
+
+  @media (max-width: 1000px) {
+    ${Item}:last-of-type h2 {
+      margin-bottom: 50px;
+    }
+  }
+`;
 
 export const Title = styled.h1`
   font-size: 50px;
   line-height: 1.1;
   margin-bottom: 8px;
 
-  @media (max-witdh: 600px) {
+  @media (max-width: 600px) {
     font-size: 35px;
   }
 `;
