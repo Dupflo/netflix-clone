@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Header } from '../components';
 import * as ROUTES from '../constants/routes';
 import { FirebaseContext } from '../context/firebase';
 import { SelectProfileContainer } from './profiles';
 import { FooterContainer } from './footer';
+import logo from '../logo.svg';
 
 export function BrowseContainer() {
+  const [category, setCategory] = useState('series');
   const [profile, setProfile] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  const { firebase } = useContext(FirebaseContext);
 
   const user = {
     displayName: 'Karl',
@@ -15,6 +20,23 @@ export function BrowseContainer() {
 
   return profile.displayName ? (
     <>
+      <Header src="joker1" dontShowOnSmallViewPort>
+        <Header.Group>
+          <Header.Logo to={ROUTES.HOME} src={logo} alt="Netflix" />
+          <Header.Link
+            active={category === 'series' ? 'true' : 'false'}
+            onClick={() => setCategory('series')}
+          >
+            Series
+          </Header.Link>
+          <Header.Link
+            active={category === 'films' ? 'true' : 'false'}
+            onClick={() => setCategory('films')}
+          >
+            Films
+          </Header.Link>
+        </Header.Group>
+      </Header>
       <p>Browse Container</p>
       <FooterContainer />
     </>
