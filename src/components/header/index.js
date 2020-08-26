@@ -3,10 +3,10 @@ import { Link as ReachRouterLink } from 'react-router-dom';
 import {
   Group,
   Background,
-  Container,
-  Logo,
   Link,
   Text,
+  Container,
+  Logo,
   ButtonLink,
   Feature,
   FeatureCallOut,
@@ -14,6 +14,9 @@ import {
   Search,
   SearchIcon,
   SearchInput,
+  Profile,
+  Picture,
+  Dropdown,
 } from './styles/header';
 
 export default function Header({ bg = true, children, ...restProps }) {
@@ -34,6 +37,7 @@ Header.Search = function HeaderSearch({
   ...restProps
 }) {
   const [searchActive, setSearchActive] = useState(false);
+
   return (
     <Search {...restProps}>
       <SearchIcon onClick={() => setSearchActive(!searchActive)}>
@@ -44,7 +48,7 @@ Header.Search = function HeaderSearch({
         onChange={({ target }) => setSearchTerm(target.value)}
         placeholder="Search files and series"
         active={searchActive}
-      />{' '}
+      />
     </Search>
   );
 };
@@ -82,4 +86,16 @@ Header.FeatureCallOut = function HeaderFeatureCallOut({
 
 Header.PlayButton = function HeaderPlayButton({ children, ...restProps }) {
   return <PlayButton {...restProps}>{children}</PlayButton>;
+};
+
+Header.Profile = function HeaderProfile({ children, ...restProps }) {
+  return <Profile {...restProps}>{children}</Profile>;
+};
+
+Header.Picture = function HeaderPicture({ src, ...restProps }) {
+  return <Picture {...restProps} src={`/images/users/${src}.png`} />;
+};
+
+Header.Dropdown = function HeaderDRopdown({ children, ...restProps }) {
+  return <Dropdown {...restProps}>{children}</Dropdown>;
 };
