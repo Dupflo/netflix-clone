@@ -21,21 +21,23 @@ export function BrowseContainer() {
   return profile.displayName ? (
     <>
       <Header src="joker1" dontShowOnSmallViewPort>
-        <Header.Group>
-          <Header.Logo to={ROUTES.HOME} src={logo} alt="Netflix" />
-          <Header.Link
-            active={category === 'series' ? 'true' : 'false'}
-            onClick={() => setCategory('series')}
-          >
-            Series
-          </Header.Link>
-          <Header.Link
-            active={category === 'films' ? 'true' : 'false'}
-            onClick={() => setCategory('films')}
-          >
-            Films
-          </Header.Link>
-        </Header.Group>
+        <Header.Frame>
+          <Header.Group>
+            <Header.Logo to={ROUTES.HOME} src={logo} alt="Netflix" />
+            <Header.Link
+              active={category === 'series' ? 'true' : 'false'}
+              onClick={() => setCategory('series')}
+            >
+              Series
+            </Header.Link>
+            <Header.Link
+              active={category === 'films' ? 'true' : 'false'}
+              onClick={() => setCategory('films')}
+            >
+              Films
+            </Header.Link>
+          </Header.Group>
+        </Header.Frame>
       </Header>
       <p>Browse Container</p>
       <FooterContainer />
